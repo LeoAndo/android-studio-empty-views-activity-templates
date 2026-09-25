@@ -24,4 +24,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "Quail4JavaEmptyViewsActivity"
 include(":app")
-include(":app")

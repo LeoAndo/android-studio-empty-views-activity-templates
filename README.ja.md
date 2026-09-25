@@ -32,7 +32,7 @@
 | **AndroidX / Material のバージョン傾向** | 新しめ (1.8.0 / 1.14.0) | 保守的 (1.6.1 / 1.10.0) | 新しめ (1.8.0 / 1.14.0) | 保守的 (1.6.1 / 1.10.0) |
 | **マニフェスト `windowSoftInputMode`** (`AndroidManifest.xml`) | 未指定 | 未指定 | `adjustResize` | `adjustResize` |
 | **Edge-to-Edge 有効化メソッド** (`MainActivity.java`) | `EdgeToEdge.enable(this)` | `EdgeToEdge.enable(this)` | `EdgeToEdge.enable(this)` | `WindowCompat.enableEdgeToEdge(getWindow())` |
-| **`settings.gradle.kts` の `include(":app")`** | 1行 | 1行 | 2行重複 (`include(":app")` x2) | 1行 |
+| **`settings.gradle.kts` の `include(":app")`** | 1行 | 1行 | 生成時重複（本リポジトリで1行に修正済） | 1行 |
 
 ---
 
@@ -179,11 +179,11 @@ Quail 4（AGP 9.4 以降）から、従来の ProGuard 設定方法から AGP 9 
 
 ### 6. プロジェクト設定 (`settings.gradle.kts`)
 
-- **Quail 4**: テンプレート生成時の不具合により、`include(":app")` が2行重複して出力されています：
+- **Quail 4**: テンプレート生成時の不具合により、プロジェクト作成直後は `include(":app")` が2行重複して出力されていました（※本リポジトリでは1行に修正済みです）：
   ```kotlin
   rootProject.name = "Quail4JavaEmptyViewsActivity"
   include(":app")
-  include(":app")
+  // include(":app") <- 雛形生成時に重複していた行
   ```
 - **他のバージョン**: `include(":app")` は1行のみです。
 
