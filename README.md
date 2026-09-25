@@ -1,0 +1,1 @@
+# android-studio-empty-views-activity-templates
