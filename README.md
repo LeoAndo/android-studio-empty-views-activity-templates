@@ -32,7 +32,7 @@ This repository is designed to track, investigate, and compare the differences b
 | **AndroidX / Material Versions** | Newer (1.8.0 / 1.14.0) | Conservative (1.6.1 / 1.10.0) | Newer (1.8.0 / 1.14.0) | Conservative (1.6.1 / 1.10.0) |
 | **Manifest `windowSoftInputMode`** (`AndroidManifest.xml`) | *Not set* | *Not set* | `adjustResize` | `adjustResize` |
 | **Edge-to-Edge Enable Method** (`MainActivity.java`) | `EdgeToEdge.enable(this)` | `EdgeToEdge.enable(this)` | `EdgeToEdge.enable(this)` | `WindowCompat.enableEdgeToEdge(getWindow())` |
-| **`settings.gradle.kts` `include(":app")`** | Single line | Single line | Originally duplicated (fixed to 1 line) | Single line |
+| **`settings.gradle.kts` `include(":app")`** | Single line | Single line | Single line | Single line |
 
 ---
 
@@ -174,17 +174,6 @@ In **Quail 4** and **Rabbit 2**, `android:windowSoftInputMode="adjustResize"` is
   }
   ```
 
----
-
-### 6. Project Settings (`settings.gradle.kts`)
-
-- **Quail 4**: Contained a known template generation artifact where `include(":app")` was accidentally duplicated upon project creation (fixed to a single line in this repository):
-  ```kotlin
-  rootProject.name = "Quail4JavaEmptyViewsActivity"
-  include(":app")
-  // include(":app") <- duplicated in original template generation
-  ```
-- **Other versions**: `include(":app")` appears only once.
 
 ---
 
