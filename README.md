@@ -13,6 +13,7 @@ This repository is designed to track, investigate, and compare the differences b
 |---|---|---|---|
 | `Panda2JavaEmptyViewsActivity` | **Android Studio Panda 2** (2025.3.2) | `AI-253.30387.90.2532.14935130` | Feb 25, 2026 |
 | `Panda3JavaEmptyViewsActivity` | **Android Studio Panda 3** (2025.3.3 Patch 1) | `AI-253.31033.145.2533.15176040` | Apr 10, 2026 |
+| `Quail1JavaEmptyViewsActivity` | **Android Studio Quail 1** (2026.1.1 Patch 2) | `AI-261.23567.138.2611.15646644` | Jun 16, 2026 |
 | `Quail4JavaEmptyViewsActivity` | **Android Studio Quail 4** (2026.1.4 Patch 1) | `AI-261.26222.65.2614.16379836` | Sep 18, 2026 |
 | `Rabbit2JavaEmptyViewsActivity` | **Android Studio Rabbit 2** (2026.2.2 Canary 2) | `AI-262.10315.125.2622.16434108` | Sep 24, 2026 |
 
@@ -20,19 +21,19 @@ This repository is designed to track, investigate, and compare the differences b
 
 ## 📊 Comparison Matrix
 
-| Feature / Setting | Panda 2 (2025.3.2) | Panda 3 (2025.3.3 P1) | Quail 4 (2026.1.4 P1) | Rabbit 2 (2026.2.2 C2) |
-|---|---|---|---|---|
-| **Android Gradle Plugin (AGP)** | `9.1.1` | `9.1.1` | `9.4.1` | `9.5.0-alpha07` |
-| **Gradle Wrapper** | `9.3.1` | `9.3.1` | `9.6.0` | `9.6.0` |
-| **Gradle Daemon Toolchain** (`gradle-daemon-jvm.properties`) | JDK `21` | JDK `21` | JDK `25` | JDK `25` |
-| **Configuration Cache** (`gradle.properties`) | *Not specified* | *Not specified* | `true` | `true` |
-| **Release Optimization DSL** (`app/build.gradle.kts`) | `isMinifyEnabled = false` | `isMinifyEnabled = false` | `optimization { enable = false }` | `optimization { enable = true; packageScope = ... }` |
-| **Keep Rules File** | `app/proguard-rules.pro` | `app/proguard-rules.pro` | `app/src/main/keepRules/rules.keep` | `app/src/main/keepRules/rules.keep` |
-| **Activity Dependency** (`libs.versions.toml`) | `activity = "1.13.0"` | `activity = "1.8.0"` | `activity-ktx = "1.13.0"` | `activity-ktx = "1.13.0"` |
-| **AndroidX / Material Versions** | Newer (1.8.0 / 1.14.0) | Conservative (1.6.1 / 1.10.0) | Newer (1.8.0 / 1.14.0) | Conservative (1.6.1 / 1.10.0) |
-| **Manifest `windowSoftInputMode`** (`AndroidManifest.xml`) | *Not set* | *Not set* | `adjustResize` | `adjustResize` |
-| **Edge-to-Edge Enable Method** (`MainActivity.java`) | `EdgeToEdge.enable(this)` | `EdgeToEdge.enable(this)` | `EdgeToEdge.enable(this)` | `WindowCompat.enableEdgeToEdge(getWindow())` |
-| **`settings.gradle.kts` `include(":app")`** | Single line | Single line | Single line | Single line |
+| Feature / Setting | Panda 2 (2025.3.2) | Panda 3 (2025.3.3 P1) | Quail 1 (2026.1.1 P2) | Quail 4 (2026.1.4 P1) | Rabbit 2 (2026.2.2 C2) |
+|---|---|---|---|---|---|
+| **Android Gradle Plugin (AGP)** | `9.1.1` | `9.1.1` | `9.2.1` | `9.4.1` | `9.5.0-alpha07` |
+| **Gradle Wrapper** | `9.3.1` | `9.3.1` | `9.4.1` | `9.6.0` | `9.6.0` |
+| **Gradle Daemon Toolchain** (`gradle-daemon-jvm.properties`) | JDK `21` | JDK `21` | JDK `21` | JDK `25` | JDK `25` |
+| **Configuration Cache** (`gradle.properties`) | *Not specified* | *Not specified* | `true` | `true` | `true` |
+| **Release Optimization DSL** (`app/build.gradle.kts`) | `isMinifyEnabled = false` | `isMinifyEnabled = false` | `optimization { enable = false }` | `optimization { enable = false }` | `optimization { enable = true; packageScope = ... }` |
+| **Keep Rules File** | `app/proguard-rules.pro` | `app/proguard-rules.pro` | `app/src/main/keepRules/rules.keep` | `app/src/main/keepRules/rules.keep` | `app/src/main/keepRules/rules.keep` |
+| **Activity Dependency** (`libs.versions.toml`) | `activity = "1.13.0"` | `activity = "1.8.0"` | `activity-ktx = "1.8.0"` | `activity-ktx = "1.13.0"` | `activity-ktx = "1.13.0"` |
+| **AndroidX / Material Versions** | Newer (1.8.0 / 1.14.0) | Conservative (1.6.1 / 1.10.0) | Conservative (1.6.1 / 1.10.0) | Newer (1.8.0 / 1.14.0) | Conservative (1.6.1 / 1.10.0) |
+| **Manifest `windowSoftInputMode`** (`AndroidManifest.xml`) | *Not set* | *Not set* | `adjustResize` | `adjustResize` | `adjustResize` |
+| **Edge-to-Edge Enable Method** (`MainActivity.java`) | `EdgeToEdge.enable(this)` | `EdgeToEdge.enable(this)` | `EdgeToEdge.enable(this)` | `EdgeToEdge.enable(this)` | `WindowCompat.enableEdgeToEdge(getWindow())` |
+| **`settings.gradle.kts` `include(":app")`** | Single line | Single line | Single line | Single line | Single line |
 
 ---
 
@@ -40,21 +41,23 @@ This repository is designed to track, investigate, and compare the differences b
 
 ### 1. Build Tools & Gradle Environment
 
-- **Gradle Version Upgrade**:
+- **Gradle Version Evolution**:
   - Panda 2 & Panda 3 use **Gradle 9.3.1**.
+  - Quail 1 adopts **Gradle 9.4.1**.
   - Quail 4 & Rabbit 2 upgrade to **Gradle 9.6.0**.
 - **Android Gradle Plugin (AGP)**:
-  - Versions evolve as: `9.1.1` (Panda 2 & 3) ➔ `9.4.1` (Quail 4) ➔ `9.5.0-alpha07` (Rabbit 2 Canary).
+  - Versions evolve as: `9.1.1` (Panda 2 & 3) ➔ `9.2.1` (Quail 1) ➔ `9.4.1` (Quail 4) ➔ `9.5.0-alpha07` (Rabbit 2 Canary).
 - **Gradle Daemon JVM Toolchain**:
-  - `gradle/gradle-daemon-jvm.properties` bumps `toolchainVersion` from **21** to **25** in Quail 4 and Rabbit 2, downloading/using JDK 25 for the Gradle daemon via Foojay Disco API.
+  - Panda 2, Panda 3, and Quail 1 target **JDK 21** (`toolchainVersion=21` in `gradle/gradle-daemon-jvm.properties`).
+  - Quail 4 and Rabbit 2 bump `toolchainVersion` to **JDK 25**, downloading/using JDK 25 for the Gradle daemon via Foojay Disco API.
 - **Gradle Configuration Cache**:
-  - In Quail 4 and Rabbit 2, `org.gradle.configuration-cache=true` is enabled by default in `gradle.properties` for faster configuration times.
+  - Starting in **Quail 1**, `org.gradle.configuration-cache=true` is enabled by default in `gradle.properties` for faster configuration and build execution.
 
 ---
 
 ### 2. ProGuard / R8 Optimization DSL & Keep Rules
 
-Starting in Quail 4 (AGP 9.4+), the traditional ProGuard build configuration has transitioned to AGP 9's new `optimization` DSL and convention-based keep rules:
+Starting in **Quail 1** (AGP 9.2+), the traditional ProGuard build configuration transitioned to AGP 9's new `optimization` DSL and convention-based keep rules:
 
 #### `app/build.gradle.kts`
 - **Panda 2 & Panda 3 (Legacy DSL)**:
@@ -69,7 +72,7 @@ Starting in Quail 4 (AGP 9.4+), the traditional ProGuard build configuration has
       }
   }
   ```
-- **Quail 4 (New Optimization DSL - Disabled)**:
+- **Quail 1 & Quail 4 (New Optimization DSL - Disabled)**:
   ```kotlin
   buildTypes {
       release {
@@ -93,7 +96,7 @@ Starting in Quail 4 (AGP 9.4+), the traditional ProGuard build configuration has
 
 #### Keep Rules File Location
 - **Panda 2 & Panda 3**: Uses `app/proguard-rules.pro`.
-- **Quail 4 & Rabbit 2**: `app/proguard-rules.pro` is removed. Keep rules are moved to **`app/src/main/keepRules/rules.keep`**.
+- **Quail 1, Quail 4, Rabbit 2**: `app/proguard-rules.pro` is removed. Keep rules are moved to **`app/src/main/keepRules/rules.keep`**.
   > AGP automatically combines all rule files in `src/main/keepRules` and passes them to R8.
 
 ---
@@ -108,23 +111,23 @@ Starting in Quail 4 (AGP 9.4+), the traditional ProGuard build configuration has
   [libraries]
   activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
   ```
-- **Quail 4 & Rabbit 2**:
+- **Quail 1, Quail 4, Rabbit 2**:
   Switches to Kotlin Extensions artifact (`activity-ktx`):
   ```toml
   [versions]
-  activityKtx = "1.13.0"
+  activityKtx = "1.8.0" # (bumped to 1.13.0 in Quail 4 & Rabbit 2)
   [libraries]
   activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
   ```
 
 #### Library Version Trends
-- **Panda 2 & Quail 4** reference latest versions:
+- **Panda 2 & Quail 4** reference newer versions:
   - `appcompat`: `1.8.0`
   - `material`: `1.14.0`
   - `constraintlayout`: `2.2.2`
   - `androidx.test.ext:junit`: `1.3.0`
   - `androidx.test.espresso:espresso-core`: `3.7.0`
-- **Panda 3 & Rabbit 2** reference conservative/long-term stable versions:
+- **Panda 3, Quail 1, Rabbit 2** reference conservative/long-term stable versions:
   - `appcompat`: `1.6.1`
   - `material`: `1.10.0`
   - `constraintlayout`: `2.1.4`
@@ -135,7 +138,7 @@ Starting in Quail 4 (AGP 9.4+), the traditional ProGuard build configuration has
 
 ### 4. Manifest Updates (`app/src/main/AndroidManifest.xml`)
 
-In **Quail 4** and **Rabbit 2**, `android:windowSoftInputMode="adjustResize"` is added to `MainActivity`:
+Starting in **Quail 1** (and continued in **Quail 4** and **Rabbit 2**), `android:windowSoftInputMode="adjustResize"` is added to `MainActivity`:
 ```xml
 <activity
     android:name=".MainActivity"
@@ -148,7 +151,7 @@ In **Quail 4** and **Rabbit 2**, `android:windowSoftInputMode="adjustResize"` is
 
 ### 5. Edge-to-Edge Implementation (`MainActivity.java`)
 
-- **Panda 2, Panda 3, Quail 4**:
+- **Panda 2, Panda 3, Quail 1, Quail 4**:
   ```java
   import androidx.activity.EdgeToEdge;
   ...
@@ -174,7 +177,6 @@ In **Quail 4** and **Rabbit 2**, `android:windowSoftInputMode="adjustResize"` is
   }
   ```
 
-
 ---
 
 ## 📂 Repository Layout
@@ -185,6 +187,8 @@ android-studio-empty-views-activity-templates/
 ├── README.ja.md                       # 比較レポート (Japanese)
 ├── Panda2JavaEmptyViewsActivity/      # Android Studio Panda 2 (2025.3.2)
 ├── Panda3JavaEmptyViewsActivity/      # Android Studio Panda 3 (2025.3.3 P1)
+├── Quail1JavaEmptyViewsActivity/      # Android Studio Quail 1 (2026.1.1 P2)
 ├── Quail4JavaEmptyViewsActivity/      # Android Studio Quail 4 (2026.1.4 P1)
 └── Rabbit2JavaEmptyViewsActivity/      # Android Studio Rabbit 2 (2026.2.2 C2)
 ```
+

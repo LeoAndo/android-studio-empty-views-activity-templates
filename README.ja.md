@@ -13,6 +13,7 @@
 |---|---|---|---|
 | `Panda2JavaEmptyViewsActivity` | **Android Studio Panda 2** (2025.3.2) | `AI-253.30387.90.2532.14935130` | 2026年2月25日 |
 | `Panda3JavaEmptyViewsActivity` | **Android Studio Panda 3** (2025.3.3 Patch 1) | `AI-253.31033.145.2533.15176040` | 2026年4月10日 |
+| `Quail1JavaEmptyViewsActivity` | **Android Studio Quail 1** (2026.1.1 Patch 2) | `AI-261.23567.138.2611.15646644` | 2026年6月16日 |
 | `Quail4JavaEmptyViewsActivity` | **Android Studio Quail 4** (2026.1.4 Patch 1) | `AI-261.26222.65.2614.16379836` | 2026年9月18日 |
 | `Rabbit2JavaEmptyViewsActivity` | **Android Studio Rabbit 2** (2026.2.2 Canary 2) | `AI-262.10315.125.2622.16434108` | 2026年9月24日 |
 
@@ -20,19 +21,19 @@
 
 ## 📊 比較マトリックス
 
-| 項目 / 設定 | Panda 2 (2025.3.2) | Panda 3 (2025.3.3 P1) | Quail 4 (2026.1.4 P1) | Rabbit 2 (2026.2.2 C2) |
-|---|---|---|---|---|
-| **Android Gradle Plugin (AGP)** | `9.1.1` | `9.1.1` | `9.4.1` | `9.5.0-alpha07` |
-| **Gradle Wrapper** | `9.3.1` | `9.3.1` | `9.6.0` | `9.6.0` |
-| **Gradle Daemon ツールチェーン** (`gradle-daemon-jvm.properties`) | JDK `21` | JDK `21` | JDK `25` | JDK `25` |
-| **Configuration Cache** (`gradle.properties`) | 未指定 | 未指定 | `true` (有効) | `true` (有効) |
-| **リリース最適化 DSL** (`app/build.gradle.kts`) | `isMinifyEnabled = false` | `isMinifyEnabled = false` | `optimization { enable = false }` | `optimization { enable = true; packageScope = ... }` |
-| **Keep ルール配置** | `app/proguard-rules.pro` | `app/proguard-rules.pro` | `app/src/main/keepRules/rules.keep` | `app/src/main/keepRules/rules.keep` |
-| **Activity 依存関係** (`libs.versions.toml`) | `activity = "1.13.0"` | `activity = "1.8.0"` | `activity-ktx = "1.13.0"` | `activity-ktx = "1.13.0"` |
-| **AndroidX / Material のバージョン傾向** | 新しめ (1.8.0 / 1.14.0) | 保守的 (1.6.1 / 1.10.0) | 新しめ (1.8.0 / 1.14.0) | 保守的 (1.6.1 / 1.10.0) |
-| **マニフェスト `windowSoftInputMode`** (`AndroidManifest.xml`) | 未指定 | 未指定 | `adjustResize` | `adjustResize` |
-| **Edge-to-Edge 有効化メソッド** (`MainActivity.java`) | `EdgeToEdge.enable(this)` | `EdgeToEdge.enable(this)` | `EdgeToEdge.enable(this)` | `WindowCompat.enableEdgeToEdge(getWindow())` |
-| **`settings.gradle.kts` の `include(":app")`** | 1行 | 1行 | 1行 | 1行 |
+| 項目 / 設定 | Panda 2 (2025.3.2) | Panda 3 (2025.3.3 P1) | Quail 1 (2026.1.1 P2) | Quail 4 (2026.1.4 P1) | Rabbit 2 (2026.2.2 C2) |
+|---|---|---|---|---|---|
+| **Android Gradle Plugin (AGP)** | `9.1.1` | `9.1.1` | `9.2.1` | `9.4.1` | `9.5.0-alpha07` |
+| **Gradle Wrapper** | `9.3.1` | `9.3.1` | `9.4.1` | `9.6.0` | `9.6.0` |
+| **Gradle Daemon ツールチェーン** (`gradle-daemon-jvm.properties`) | JDK `21` | JDK `21` | JDK `21` | JDK `25` | JDK `25` |
+| **Configuration Cache** (`gradle.properties`) | 未指定 | 未指定 | `true` (有効) | `true` (有効) | `true` (有効) |
+| **リリース最適化 DSL** (`app/build.gradle.kts`) | `isMinifyEnabled = false` | `isMinifyEnabled = false` | `optimization { enable = false }` | `optimization { enable = false }` | `optimization { enable = true; packageScope = ... }` |
+| **Keep ルール配置** | `app/proguard-rules.pro` | `app/proguard-rules.pro` | `app/src/main/keepRules/rules.keep` | `app/src/main/keepRules/rules.keep` | `app/src/main/keepRules/rules.keep` |
+| **Activity 依存関係** (`libs.versions.toml`) | `activity = "1.13.0"` | `activity = "1.8.0"` | `activity-ktx = "1.8.0"` | `activity-ktx = "1.13.0"` | `activity-ktx = "1.13.0"` |
+| **AndroidX / Material のバージョン傾向** | 新しめ (1.8.0 / 1.14.0) | 保守的 (1.6.1 / 1.10.0) | 保守的 (1.6.1 / 1.10.0) | 新しめ (1.8.0 / 1.14.0) | 保守的 (1.6.1 / 1.10.0) |
+| **マニフェスト `windowSoftInputMode`** (`AndroidManifest.xml`) | 未指定 | 未指定 | `adjustResize` | `adjustResize` | `adjustResize` |
+| **Edge-to-Edge 有効化メソッド** (`MainActivity.java`) | `EdgeToEdge.enable(this)` | `EdgeToEdge.enable(this)` | `EdgeToEdge.enable(this)` | `EdgeToEdge.enable(this)` | `WindowCompat.enableEdgeToEdge(getWindow())` |
+| **`settings.gradle.kts` の `include(":app")`** | 1行 | 1行 | 1行 | 1行 | 1行 |
 
 ---
 
@@ -40,21 +41,23 @@
 
 ### 1. ビルドツールと Gradle 実行環境
 
-- **Gradle バージョンの更新**:
+- **Gradle バージョンの変遷**:
   - Panda 2 および Panda 3 では **Gradle 9.3.1** が使用されています。
+  - Quail 1 では **Gradle 9.4.1** が採用されました。
   - Quail 4 および Rabbit 2 では **Gradle 9.6.0** へアップデートされています。
 - **Android Gradle Plugin (AGP)**:
-  - `9.1.1` (Panda 2 & 3) ➔ `9.4.1` (Quail 4) ➔ `9.5.0-alpha07` (Rabbit 2 Canary) と段階的に更新されています。
+  - `9.1.1` (Panda 2 & 3) ➔ `9.2.1` (Quail 1) ➔ `9.4.1` (Quail 4) ➔ `9.5.0-alpha07` (Rabbit 2 Canary) とバージョンアップしています。
 - **Gradle Daemon 用 JVM ツールチェーン**:
-  - `gradle/gradle-daemon-jvm.properties` の `toolchainVersion` が、Quail 4 以降 **21** から **25** (JDK 25) に引き上げられています。Foojay Disco API 経由でプラットフォームに応じた JDK 25 が取得・指定されます。
+  - Panda 2, Panda 3, Quail 1 では **JDK 21** (`toolchainVersion=21` in `gradle/gradle-daemon-jvm.properties`) を指定。
+  - Quail 4 および Rabbit 2 では **JDK 25** へ引き上げられ、Foojay Disco API 経由でプラットフォームに応じた JDK 25 が取得・指定されます。
 - **Configuration Cache のデフォルト有効化**:
-  - Quail 4 および Rabbit 2 では、`gradle.properties` に `org.gradle.configuration-cache=true` がデフォルトで追記され、ビルド設定フェーズのキャッシュが標準で有効化されました。
+  - **Quail 1** 以降、`gradle.properties` に `org.gradle.configuration-cache=true` がデフォルトで追記され、ビルド設定フェーズのキャッシュが標準で有効化されました。
 
 ---
 
 ### 2. ProGuard / R8 最適化設定 DSL と Keep ルール配置
 
-Quail 4（AGP 9.4 以降）から、従来の ProGuard 設定方法から AGP 9 の新しい `optimization` DSL および規約ベースの Keep ルール配置へと刷新されました。
+**Quail 1**（AGP 9.2 以降）から、従来の ProGuard 設定方法から AGP 9 の新しい `optimization` DSL および規約ベースの Keep ルール配置へと刷新されました。
 
 #### `app/build.gradle.kts`
 - **Panda 2 & Panda 3 (従来の ProGuard DSL)**:
@@ -69,7 +72,7 @@ Quail 4（AGP 9.4 以降）から、従来の ProGuard 設定方法から AGP 9 
       }
   }
   ```
-- **Quail 4 (新しい optimization DSL - 無効化)**:
+- **Quail 1 & Quail 4 (新しい optimization DSL - 無効化)**:
   ```kotlin
   buildTypes {
       release {
@@ -93,7 +96,7 @@ Quail 4（AGP 9.4 以降）から、従来の ProGuard 設定方法から AGP 9 
 
 #### Keep ルールファイルの移行
 - **Panda 2 & Panda 3**: `app/proguard-rules.pro` を利用。
-- **Quail 4 & Rabbit 2**: `app/proguard-rules.pro` は削除され、**`app/src/main/keepRules/rules.keep`** へ移行されました。
+- **Quail 1, Quail 4, Rabbit 2**: `app/proguard-rules.pro` は削除され、**`app/src/main/keepRules/rules.keep`** へ移行されました。
   > AGP は `src/main/keepRules` 配下のすべてのルールファイルを自動的に収集して R8 に渡す規約となっています。
 
 ---
@@ -108,11 +111,11 @@ Quail 4（AGP 9.4 以降）から、従来の ProGuard 設定方法から AGP 9 
   [libraries]
   activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
   ```
-- **Quail 4 & Rabbit 2**:
+- **Quail 1, Quail 4, Rabbit 2**:
   Kotlin 拡張を含むアーティファクト (`activity-ktx`) に変更されました：
   ```toml
   [versions]
-  activityKtx = "1.13.0"
+  activityKtx = "1.8.0" # (Quail 4 / Rabbit 2 では 1.13.0)
   [libraries]
   activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
   ```
@@ -124,7 +127,7 @@ Quail 4（AGP 9.4 以降）から、従来の ProGuard 設定方法から AGP 9 
   - `constraintlayout`: `2.2.2`
   - `androidx.test.ext:junit`: `1.3.0`
   - `androidx.test.espresso:espresso-core`: `3.7.0`
-- **Panda 3 & Rabbit 2** は保守的・長期安定板を採用：
+- **Panda 3, Quail 1, Rabbit 2** は保守的・長期安定版を採用：
   - `appcompat`: `1.6.1`
   - `material`: `1.10.0`
   - `constraintlayout`: `2.1.4`
@@ -135,7 +138,7 @@ Quail 4（AGP 9.4 以降）から、従来の ProGuard 設定方法から AGP 9 
 
 ### 4. マニフェスト設定の変更 (`app/src/main/AndroidManifest.xml`)
 
-**Quail 4** および **Rabbit 2** では、`MainActivity` に `android:windowSoftInputMode="adjustResize"` がデフォルトで付与されています：
+**Quail 1** 以降（Quail 4, Rabbit 2 含む）、`MainActivity` に `android:windowSoftInputMode="adjustResize"` がデフォルトで付与されています：
 ```xml
 <activity
     android:name=".MainActivity"
@@ -148,7 +151,7 @@ Quail 4（AGP 9.4 以降）から、従来の ProGuard 設定方法から AGP 9 
 
 ### 5. Edge-to-Edge 実装メソッドの変更 (`MainActivity.java`)
 
-- **Panda 2, Panda 3, Quail 4**:
+- **Panda 2, Panda 3, Quail 1, Quail 4**:
   `androidx.activity.EdgeToEdge` を使用：
   ```java
   import androidx.activity.EdgeToEdge;
@@ -175,7 +178,6 @@ Quail 4（AGP 9.4 以降）から、従来の ProGuard 設定方法から AGP 9 
   }
   ```
 
-
 ---
 
 ## 📂 ディレクトリ構成
@@ -186,6 +188,7 @@ android-studio-empty-views-activity-templates/
 ├── README.ja.md                       # 日本語比較レポート
 ├── Panda2JavaEmptyViewsActivity/      # Android Studio Panda 2 (2025.3.2)
 ├── Panda3JavaEmptyViewsActivity/      # Android Studio Panda 3 (2025.3.3 P1)
+├── Quail1JavaEmptyViewsActivity/      # Android Studio Quail 1 (2026.1.1 P2)
 ├── Quail4JavaEmptyViewsActivity/      # Android Studio Quail 4 (2026.1.4 P1)
 └── Rabbit2JavaEmptyViewsActivity/      # Android Studio Rabbit 2 (2026.2.2 C2)
 ```
